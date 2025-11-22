@@ -1,0 +1,768 @@
+:root {
+    --color-primary: #2f7d32;           /* main green */
+    --color-primary-light: #81c784;     /* light green */
+    --color-accent: #4caf50;            /* accent green */
+    --color-dark: #1f1f1f;              /* neutral dark for text */
+    --color-muted: #f4fbf4;             /* very light green/white */
+    --color-text: #3b3b3b;              /* neutral text */
+    --border-radius: 16px;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
+    --shadow-strong: 0 18px 45px rgba(0, 0, 0, 0.12);
+    --max-width: 1100px;
+    font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-text);
+    background: radial-gradient(
+        circle at top left,
+        #e0f2e9 0,
+        #ffffff 45%,
+        #f8fbf9 100%
+    );
+    line-height: 1.6;
+}
+
+/* -------------------- GLOBAL ELEMENTS -------------------- */
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-primary-light);
+    text-decoration: underline;
+}
+
+main {
+    min-height: 60vh;
+}
+
+/* -------------------- HEADER & NAV -------------------- */
+
+.site-header {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(47, 111, 79, 0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    padding: 1.25rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.brand h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.03em;
+}
+
+.brand .tagline {
+    font-size: 0.9rem;
+    color: #6d7f74;
+    margin-top: 0.2rem;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: #345244;
+    position: relative;
+    transition: background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.15s ease;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.25rem;
+    height: 2px;
+    border-radius: 999px;
+    background-color: var(--color-primary-light);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    transform: scaleX(1);
+}
+
+.main-nav a.cta {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.main-nav a.cta:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+/* -------------------- BUTTONS -------------------- */
+
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.7rem;
+    border-radius: 999px;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        #245c27
+    );
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.25s ease;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 22px rgba(47, 111, 79, 0.22);
+    background: linear-gradient(
+        135deg,
+        #245c27,
+        var(--color-primary)
+    );
+}
+
+.button.ghost {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    box-shadow: none;
+}
+
+.button.ghost:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+/* "Danger" now just a stronger green action (no red) */
+.button.danger {
+    background: linear-gradient(
+        135deg,
+        #1b5e20,
+        #0f3d13
+    );
+}
+
+.button.danger:hover {
+    box-shadow: 0 14px 24px rgba(11, 57, 16, 0.35);
+}
+
+/* -------------------- PAGE WRAPPERS -------------------- */
+
+.content,
+.form-page {
+    max-width: var(--max-width);
+    margin: 3rem auto;
+    padding: 0 1.5rem 3rem;
+}
+
+/* -------------------- HERO (HOME) -------------------- */
+
+.hero {
+    max-width: var(--max-width);
+    margin: 3rem auto;
+    padding: 3rem;
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    background: radial-gradient(
+        circle at top left,
+        rgba(47, 125, 50, 0.22),
+        rgba(129, 199, 132, 0.3)
+    );
+    border-radius: 24px;
+    box-shadow: var(--shadow-strong);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at bottom right,
+        rgba(255, 255, 255, 0.7),
+        transparent 55%
+    );
+    pointer-events: none;
+}
+
+.hero-text,
+.hero-details {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+.hero-text p {
+    margin-bottom: 1.8rem;
+    max-width: 32rem;
+    color: #324337;
+}
+
+.hero-details {
+    align-self: center;
+    padding: 1.8rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 18px;
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-details h3 {
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+.hero-details ul {
+    list-style: none;
+}
+
+.hero-details li {
+    padding-left: 1.4rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+    color: #476354;
+    font-size: 0.95rem;
+}
+
+.hero-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary-light);
+    font-size: 1.1rem;
+}
+
+/* -------------------- SECTION TITLES -------------------- */
+
+.section-title {
+    text-align: center;
+    margin: 3rem 0 2rem;
+    font-size: 2rem;
+    color: var(--color-dark);
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-primary-light)
+    );
+    margin: 0.6rem auto 0;
+}
+
+/* -------------------- PRODUCT GRID -------------------- */
+
+.product-grid {
+    max-width: var(--max-width);
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.7rem;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(240px, 1fr)
+    );
+}
+
+.product-card {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    padding: 1.9rem;
+    text-align: left;
+    transition: transform 0.18s ease,
+        box-shadow 0.18s ease;
+    border: 1px solid rgba(47, 111, 79, 0.06);
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
+}
+
+.product-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.product-card .price {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.7rem;
+    color: #245c27;
+}
+
+.product-card .description {
+    margin-bottom: 1.2rem;
+    color: #5c6f62;
+    font-size: 0.95rem;
+}
+
+/* -------------------- VALUES -------------------- */
+
+.values {
+    background-color: var(--color-muted);
+    padding: 4rem 1.5rem;
+}
+
+.values-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    gap: 1.6rem;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+}
+
+.value-item {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.value-item h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+/* -------------------- TABLE / CARD LAYOUT (CART & INVOICE) -------------------- */
+
+.table-card,
+.invoice-card {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    padding: 2.5rem;
+}
+
+.table-card h2,
+.invoice-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.table-card p {
+    color: #5c6f62;
+}
+
+/* Tables */
+
+.cart-table,
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.6rem;
+    font-size: 0.95rem;
+}
+
+.cart-table th,
+.cart-table td,
+.invoice-table th,
+.invoice-table td {
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid rgba(47, 111, 79, 0.12);
+    text-align: left;
+}
+
+.cart-table th,
+.invoice-table th {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: #4b5e52;
+}
+
+.cart-table tbody tr:hover,
+.invoice-table tbody tr:hover {
+    background-color: rgba(129, 199, 132, 0.12);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.total {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* Invoice layout details */
+
+.invoice-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.invoice-company {
+    text-align: right;
+    font-size: 0.95rem;
+    color: #4b5e52;
+}
+
+.invoice-section {
+    margin-top: 1.8rem;
+}
+
+.invoice-notes {
+    margin-top: 2.2rem;
+    background-color: var(--color-muted);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+}
+
+/* -------------------- FORMS (LOGIN, REGISTER, CHECKOUT) -------------------- */
+
+.form-card {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    padding: 2.5rem;
+}
+
+.form-card.wide {
+    padding: 3rem;
+}
+
+.form-card h2 {
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.form-card p {
+    margin-bottom: 1.5rem;
+    color: #5c6f62;
+}
+
+.form-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-grid.two-column {
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+}
+
+.form-grid label {
+    font-weight: 600;
+    color: #3e5146;
+    font-size: 0.9rem;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 1px solid rgba(47, 111, 79, 0.25);
+    background-color: #fefefe;
+    font-size: 1rem;
+    transition: border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(47, 111, 79, 0.18);
+    outline: none;
+    background-color: #ffffff;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.form-actions.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.form-grid .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+/* Checkout summary */
+
+.summary {
+    background-color: var(--color-muted);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary ul {
+    list-style: none;
+}
+
+.summary li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.summary .total {
+    font-size: 1.15rem;
+}
+
+/* -------------------- ABOUT PAGE SECTIONS -------------------- */
+
+.about-page .story,
+.about-page .brand-values,
+.about-page .contact {
+    margin-bottom: 2.5rem;
+    background-color: #ffffff;
+    padding: 2.3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.about-page .story h2,
+.about-page .brand-values h2,
+.about-page .contact h2 {
+    margin-bottom: 0.8rem;
+    color: var(--color-dark);
+}
+
+/* Mission & Vision */
+
+.mission-vision {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(240px, 1fr)
+    );
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.mission-vision div {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Founder / Identity */
+
+.identity {
+    margin-bottom: 2.5rem;
+}
+
+.founder-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.8rem;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow-strong);
+    border: 1px solid rgba(47, 111, 79, 0.1);
+}
+
+.founder-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 30% 20%,
+        var(--color-primary-light),
+        var(--color-primary)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 25px rgba(47, 111, 79, 0.45);
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.founder-info h2 {
+    margin-bottom: 0.4rem;
+    color: var(--color-dark);
+}
+
+.founder-tagline {
+    margin-bottom: 1.1rem;
+    color: #4a5c50;
+    font-size: 0.95rem;
+}
+
+.identity .details {
+    list-style: none;
+    display: grid;
+    gap: 0.45rem;
+    font-size: 0.95rem;
+}
+
+/* -------------------- FOOTER -------------------- */
+
+.site-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #ffffff;
+    border-top: 1px solid rgba(47, 111, 79, 0.08);
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #6c7a71;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 2.4rem;
+        margin-top: 2.2rem;
+    }
+
+    .hero-details {
+        order: -1;
+    }
+
+    .founder-card {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .founder-avatar {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        justify-content: center;
+        text-align: center;
+        gap: 0.75rem;
+        padding-inline: 1.2rem;
+    }
+
+    .main-nav ul {
+        justify-content: center;
+    }
+
+    .content,
+    .form-page {
+        margin-top: 2.2rem;
+    }
+
+    .form-actions {
+        justify-content: center;
+    }
+
+    .invoice-company {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.9rem;
+    }
+
+    .brand h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.9rem;
+    }
+
+    .table-card,
+    .invoice-card,
+    .form-card {
+        padding: 1.8rem;
+    }
+}

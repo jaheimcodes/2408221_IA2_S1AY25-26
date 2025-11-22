@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | EcoThreads</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <h1>EcoThreads</h1>
+            <p class="tagline">Sustainably Stylish Apparel for Everyday Life</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-page">
+        <section class="form-card wide">
+            <h2>Create Your EcoThreads Account</h2>
+            <p>Register to unlock member rewards, early access launches, and personalized recommendations.</p>
+
+            <form class="form-grid two-column">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" placeholder="Avery" required>
+
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" placeholder="Green" required>
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="avery.green@example.com" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="(876) 555-0101">
+
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="ecoavery" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" required>
+
+                <label for="address">Street Address</label>
+                <input type="text" id="address" placeholder="12 Greenway Ave" required>
+
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Kingston" required>
+
+                <label for="country">Country</label>
+                <input type="text" id="country" placeholder="Jamaica" required>
+
+                <label for="newsletter">Join Sustainability Newsletter</label>
+                <select id="newsletter">
+                    <option value="yes">Yes, keep me inspired</option>
+                    <option value="no">No, thanks</option>
+                </select>
+
+                <label for="style">Favorite Style Aesthetic</label>
+                <select id="style">
+                    <option value="minimalist">Minimalist</option>
+                    <option value="bohemian">Bohemian</option>
+                    <option value="athleisure">Athleisure</option>
+                    <option value="classic">Classic</option>
+                </select>
+
+                <label for="referral">Referral Code (optional)</label>
+                <input type="text" id="referral" placeholder="FRIEND25">
+
+                <label for="terms" class="checkbox">
+                    <input type="checkbox" id="terms" required>
+                    I agree to EcoThreads' Terms of Service and Privacy Policy.
+                </label>
+
+                <div class="form-actions full-width">
+                    <button class="button">Register</button>
+                    <button type="reset" class="button ghost">Clear</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 EcoThreads. All rights reserved.</p>
+    </footer>
+</body>
+</html>

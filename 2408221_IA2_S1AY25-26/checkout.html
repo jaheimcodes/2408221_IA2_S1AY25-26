@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkout | EcoThreads</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header"></header>
+        <div class="brand">
+            <h1>EcoThreads</h1>
+            <p class="tagline">Sustainable. Stylish. Fashion.</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="invoice.html">Invoice</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+        <main class="form-page">
+            <section class="form-card wide">
+                <h2>Checkout Summary</h2>
+                <p>Please review your order and enter your shipping details to complete your purchase.</p>
+                
+                <div class="summary">
+                    <h3>Order Summary</h3>
+                    <ul>
+                       <li><span>Bamboo Relaxed Tee (x2)</span> <span>$66.24</span></li>
+                        <li><span>Organic Denim Jacket (x1)</span> <span>$112.70</span></li>
+                        <li><span>Hemp Lounge Pants (x1)</span> <span>$57.96</span></li>
+                        <li><span>Shipping</span> <span>$12.00</span></li>
+                        <li><span>Order Total</span> <span class="total">$248.90</span></li> 
+                    </ul>
+                </div>
+                <form method="post" class="form-grid two-column">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" placeholder="Avery Green" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="avery.green@example.com"required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="(876) 555-0101" required>
+
+                    <label for="address">Shipping Address</label>
+                    <input type="text" id="address" placeholder="Holland Estate Lot 101 Falmouth Trelawny" required>
+
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Falmouth" required>
+
+                    <label for="parish">Parish/State</label>
+                    <input type="text" id="parish" placeholder="Trelawny" required>
+
+                    <label for="zip">Postal Code</label>
+                    <input type="text" id="postal" placeholder="00000" required>
+
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" required>
+                        <option value="credit-card">Credit-card</option>
+                        <option value="debit-card">Debit-card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bank-transfer">Bank Transfer</option>
+                    </select>
+                    
+                    <label for="amount">Amount Being Paid</label>
+                    <input type="number" id="amount" min="0" step="0.01" value="$248.90" required>
+
+                    <label for="notes">Delivery Notes</label>
+                    <textarea id="notes" rows="4" placeholder="Leave package with concierge"></textarea>
+
+                    <div class="form-actions full-width">
+                        <button type="reset" class="button ghost">Clear All</button>
+                        <button type="submit" class="button">Check Out</button>
+                        <a class="button danger" href="cart.html">Cancel</a>
+                        <a class="Button ghost" href="index.html">Close</a>                        
+                    </div>
+                    </form>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <p>&copy; 2025 EcoThreads. All rights reserved.</p>
+        </footer>
+    </body>
+    </html>
